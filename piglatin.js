@@ -115,28 +115,29 @@ PiglatinTranslator.prototype.translate = function(words) {
   return result;
 };
 
-function convertToPiglation(word) {
+function convertToPiglatin(word) {
   translator = new PiglatinTranslator();
   result = translator.translate(word);
+  return result;
 }
 
-convertToPiglation("Hello, world!!");
-convertToPiglation("Hello");
-convertToPiglation("the");
-convertToPiglation("apple");
-convertToPiglation("banana");
-convertToPiglation("cherry");
-convertToPiglation("eat pie");
-convertToPiglation("three");
-convertToPiglation("school");
-convertToPiglation("quiet");
-convertToPiglation("square");
-convertToPiglation("the quick brown fox");
-convertToPiglation("Square!");
-convertToPiglation("hello");
-convertToPiglation("hello world");
-convertToPiglation("Hello world");
-convertToPiglation("Hello, world!!");
-convertToPiglation("eat apples");
-convertToPiglation("quick brown fox");
+convertToPiglatin("Hello, world!!");
+convertToPiglatin("Hello");
+convertToPiglatin("the");
+convertToPiglatin("apple");
+convertToPiglatin("banana");
+convertToPiglatin("cherry");
+convertToPiglatin("eat pie");
+convertToPiglatin("three");
+convertToPiglatin("school");
+convertToPiglatin("quiet");
+convertToPiglatin("square");
+convertToPiglatin("the quick brown fox");
+convertToPiglatin("Square!");
+convertToPiglatin("hello");
+convertToPiglatin("hello world");
+convertToPiglatin("Hello world");
+convertToPiglatin("Hello, world!!");
+convertToPiglatin("eat apples");
+convertToPiglatin("quick brown fox");
 
