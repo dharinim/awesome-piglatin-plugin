@@ -24,7 +24,7 @@ PiglatinTranslator.prototype.quSinglePhoneme = function(word) {
 
 PiglatinTranslator.prototype.beginWithConsonants = function(word) {
   var words = word.split('');
-  for (i=0; i< words.length-1; i++){
+  for (i=0; i < words.length; i++){
     if (this.vowels.includes(words[i])){
       return i;
     }
@@ -53,24 +53,30 @@ PiglatinTranslator.prototype.constructPiglatinFromIndex = function(word, index) 
   var pig_latin_word;
 
   for (var i=right.length-1; i>0; i--){
-    if (right[i].charCodeAt(0)< 65 && right[i].charCodeAt(0) >122){
+    if (right[i].charCodeAt(0) < 65 || right[i].charCodeAt(0) >122){
       count +=1;
     } else {
       break;
     }
-    rightPunctDel = count;
   }
-  
-  if (word == this.capitalize(word)){
 
+  rightPunctDel = count;
+
+  if (word == this.capitalize(word) && rightPunctDel > 0) {
     pig_latin_word = right[0].toUpperCase() +
-                      right.slice(1, ((right.length-1) - rightPunctDel)) +
+                      right.slice(1,(right.length) - rightPunctDel) +
+                      left[0].toLowerCase() + left.slice(1,(left.length-1)) +
+                      "ay" + right.slice((right.length - rightPunctDel), right.length);
+  }
+  else if (word == this.capitalize(word)){
+    pig_latin_word = right[0].toUpperCase() +
+                      right.slice(1, ((right.length) - rightPunctDel)) +
                       left[0].toLowerCase() + left.slice(1,(left.length-1)) +
                       "ay" ;
   } else if (rightPunctDel > 0) {
-    pig_latin_word = right.slice(0,(right.length-1) - right_punct_del) +
+    pig_latin_word = right.slice(0,(right.length) - rightPunctDel) +
                       left +
-                      "ay" + right.slice((right.length - right_punct_del), right.length-1);
+                      "ay" + right.slice((right.length - rightPunctDel), right.length);
   } else {
     pig_latin_word = right + left + "ay";
   }
@@ -109,25 +115,28 @@ PiglatinTranslator.prototype.translate = function(words) {
   return result;
 };
 
-function convertToPiglatin(word) {
+function convertToPiglation(word) {
   translator = new PiglatinTranslator();
   result = translator.translate(word);
 }
 
-convertToPiglatin("apple");
-convertToPiglatin("banana");
-convertToPiglatin("cherry");
-convertToPiglatin("eat pie");
-convertToPiglatin("three");
-convertToPiglatin("school");
-convertToPiglatin("quiet");
-convertToPiglatin("square");
-convertToPiglatin("the quick brown fox");
-convertToPiglatin("Square!");
-convertToPiglatin("hello");
-convertToPiglatin("hello world");
-convertToPiglatin("Hello world");
-convertToPiglatin("Hello, world!!");
-convertToPiglatin("eat apples");
-convertToPiglatin("quick brown fox");
+convertToPiglation("Hello, world!!");
+convertToPiglation("Hello");
+convertToPiglation("the");
+convertToPiglation("apple");
+convertToPiglation("banana");
+convertToPiglation("cherry");
+convertToPiglation("eat pie");
+convertToPiglation("three");
+convertToPiglation("school");
+convertToPiglation("quiet");
+convertToPiglation("square");
+convertToPiglation("the quick brown fox");
+convertToPiglation("Square!");
+convertToPiglation("hello");
+convertToPiglation("hello world");
+convertToPiglation("Hello world");
+convertToPiglation("Hello, world!!");
+convertToPiglation("eat apples");
+convertToPiglation("quick brown fox");
 
