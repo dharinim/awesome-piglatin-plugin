@@ -1,4 +1,3 @@
-
 function PiglatinTranslator() {
   this.vowels = ['a','e','i','o','u'];
 }
